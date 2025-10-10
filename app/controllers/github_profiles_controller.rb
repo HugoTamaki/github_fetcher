@@ -1,0 +1,2 @@
+class GithubProfilesController < ApplicationController
+end
