@@ -3,6 +3,10 @@ class GithubProfilesController < ApplicationController
     @github_profiles = GithubProfile.all
   end
 
+  def show
+    @github_profile = GithubProfile.find(params[:id])
+  end
+
   def search_profile
     
   end
@@ -10,18 +14,29 @@ class GithubProfilesController < ApplicationController
   def fetch_profile
     result = FetchGithubProfile.call(github_url: params[:github_url])
 
+    @github_profile = GithubProfile.find_or_initialize_by(nick: result.data[:result][:nick])
+    @github_profile.assign_attributes(result.data[:result])
+
     unless result.success?
       flash.now[:alert] = result.data[:error]
-      return render :search_profile, status: :unprocessable_entity
+      return render page_by_request_referrer, status: :unprocessable_entity
     end
 
-    github_profile = GithubProfile.new(result.data[:result])
-
-    if github_profile.save
-      redirect_to github_profiles_path, notice: "GitHub profile fetched successfully."
+    if @github_profile.save
+      redirect_to github_profile_path(@github_profile), notice: "GitHub profile fetched successfully."
     else
-      flash.now[:alert] = github_profile.errors.full_messages.to_sentence
-      return render :search_profile, status: :unprocessable_entity
+      flash.now[:alert] = @github_profile.errors.full_messages.to_sentence
+      return render page_by_request_referrer, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def page_by_request_referrer
+    if request.referer&.include?("search_profile")
+      :search_profile
+    else
+      :show
     end
   end
 end

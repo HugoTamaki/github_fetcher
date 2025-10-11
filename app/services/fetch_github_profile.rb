@@ -21,12 +21,12 @@ class FetchGithubProfile < ApplicationService
     options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--headless')
     options.add_argument('--disable-gpu')
-
+    
     @driver = Selenium::WebDriver.for :chrome, options: options
     @driver.navigate.to @github_url
-
+    
     sleep 0.5
-
+    
     name = fetch_name
     nick = fetch_nickname
     image_url = fetch_image_url
@@ -34,6 +34,7 @@ class FetchGithubProfile < ApplicationService
     following_count = fetch_following_count
     contributions_count = fetch_contributions_count
     image_url = @driver.find_element(css: 'img.avatar-user').attribute('src') rescue nil
+    @driver.quit
 
     handle_success(result: {
       name: name,
@@ -44,6 +45,9 @@ class FetchGithubProfile < ApplicationService
       following_count: following_count,
       contributions_count: contributions_count
     })
+
+  rescue StandardError => e
+    handle_failure("Failed to fetch GitHub profile: #{e.message}")
   end
 
   def fetch_name

@@ -42,7 +42,7 @@ describe FetchGithubProfile do
           expect(service.data[:error]).to be_nil
           expect(service.data[:result]).to include(
             :name,
-            :nickname,
+            :nick,
             :image_url,
             :github_url,
             :followers_count,

@@ -9,7 +9,6 @@ describe GithubProfile, type: :model do
       expect(profile.errors[:github_url]).to include("can't be blank")
       expect(profile.errors[:followers_count]).to include("can't be blank")
       expect(profile.errors[:following_count]).to include("can't be blank")
-      expect(profile.errors[:stars_count]).to include("can't be blank")
       expect(profile.errors[:contributions_count]).to include("can't be blank")
     end
 
@@ -18,7 +17,6 @@ describe GithubProfile, type: :model do
       expect(profile.valid?).to be_falsey
       expect(profile.errors[:followers_count]).to include("is not a number")
       expect(profile.errors[:following_count]).to include("is not a number")
-      expect(profile.errors[:stars_count]).to include("is not a number")
       expect(profile.errors[:contributions_count]).to include("is not a number")
     end
     

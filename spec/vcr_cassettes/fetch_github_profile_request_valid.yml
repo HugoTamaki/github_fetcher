@@ -32,12 +32,12 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome","browserVersion":"141.0.7390.66","chrome":{"chromedriverVersion":"141.0.7390.76
-        (d6fcfbb51aac4df61d06692d4a62fd8b9aaf3c3a-refs/branch-heads/7390_65@{#3})","userDataDir":"/var/folders/fg/qyyq59915k7_6lk_3l_3pg2w0000gn/T/.org.chromium.Chromium.pkj8Ga"},"fedcm:accounts":true,"goog:chromeOptions":{"debuggerAddress":"localhost:50532"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"mac","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss
-        and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:extension:minPinLength":true,"webauthn:extension:prf":true,"webauthn:virtualAuthenticators":true},"sessionId":"bd4ab7542beca45d6347327f16fee878"}}'
-  recorded_at: Sat, 11 Oct 2025 23:26:23 GMT
+        (d6fcfbb51aac4df61d06692d4a62fd8b9aaf3c3a-refs/branch-heads/7390_65@{#3})","userDataDir":"/var/folders/fg/qyyq59915k7_6lk_3l_3pg2w0000gn/T/.org.chromium.Chromium.S8HQfM"},"fedcm:accounts":true,"goog:chromeOptions":{"debuggerAddress":"localhost:50571"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"mac","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss
+        and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:extension:minPinLength":true,"webauthn:extension:prf":true,"webauthn:virtualAuthenticators":true},"sessionId":"d6b3f8332759d01eb79a17be9997b94c"}}'
+  recorded_at: Sat, 11 Oct 2025 23:28:38 GMT
 - request:
     method: post
-    uri: http://127.0.0.1:9517/session/bd4ab7542beca45d6347327f16fee878/url
+    uri: http://127.0.0.1:9517/session/d6b3f8332759d01eb79a17be9997b94c/url
     body:
       encoding: UTF-8
       string: '{"url":"https://github.com/matz"}'
@@ -66,10 +66,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"value":null}'
-  recorded_at: Sat, 11 Oct 2025 23:26:24 GMT
+  recorded_at: Sat, 11 Oct 2025 23:28:39 GMT
 - request:
     method: post
-    uri: http://127.0.0.1:9517/session/bd4ab7542beca45d6347327f16fee878/element
+    uri: http://127.0.0.1:9517/session/d6b3f8332759d01eb79a17be9997b94c/element
     body:
       encoding: UTF-8
       string: '{"using":"css selector","value":"span.p-name"}'
@@ -97,11 +97,11 @@ http_interactions:
       - no-cache
     body:
       encoding: UTF-8
-      string: '{"value":{"element-6066-11e4-a52e-4f735466cecf":"f.7CEA32D278DABA86D41B3A18FE638E7C.d.38216A944091F3514B2237B8D347E4B4.e.23"}}'
-  recorded_at: Sat, 11 Oct 2025 23:26:24 GMT
+      string: '{"value":{"element-6066-11e4-a52e-4f735466cecf":"f.163AD514E133EBD9620CFFF9A0A6D2E1.d.B2308F3D3187B5979FEC30950C38AE41.e.30"}}'
+  recorded_at: Sat, 11 Oct 2025 23:28:40 GMT
 - request:
     method: get
-    uri: http://127.0.0.1:9517/session/bd4ab7542beca45d6347327f16fee878/element/f.7CEA32D278DABA86D41B3A18FE638E7C.d.38216A944091F3514B2237B8D347E4B4.e.23/text
+    uri: http://127.0.0.1:9517/session/d6b3f8332759d01eb79a17be9997b94c/element/f.163AD514E133EBD9620CFFF9A0A6D2E1.d.B2308F3D3187B5979FEC30950C38AE41.e.30/text
     body:
       encoding: US-ASCII
       string: ''
@@ -130,10 +130,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"value":"Yukihiro \"Matz\" Matsumoto"}'
-  recorded_at: Sat, 11 Oct 2025 23:26:24 GMT
+  recorded_at: Sat, 11 Oct 2025 23:28:40 GMT
 - request:
     method: post
-    uri: http://127.0.0.1:9517/session/bd4ab7542beca45d6347327f16fee878/element
+    uri: http://127.0.0.1:9517/session/d6b3f8332759d01eb79a17be9997b94c/element
     body:
       encoding: UTF-8
       string: '{"using":"css selector","value":"span.p-nickname"}'
@@ -161,11 +161,11 @@ http_interactions:
       - no-cache
     body:
       encoding: UTF-8
-      string: '{"value":{"element-6066-11e4-a52e-4f735466cecf":"f.7CEA32D278DABA86D41B3A18FE638E7C.d.38216A944091F3514B2237B8D347E4B4.e.24"}}'
-  recorded_at: Sat, 11 Oct 2025 23:26:24 GMT
+      string: '{"value":{"element-6066-11e4-a52e-4f735466cecf":"f.163AD514E133EBD9620CFFF9A0A6D2E1.d.B2308F3D3187B5979FEC30950C38AE41.e.31"}}'
+  recorded_at: Sat, 11 Oct 2025 23:28:40 GMT
 - request:
     method: get
-    uri: http://127.0.0.1:9517/session/bd4ab7542beca45d6347327f16fee878/element/f.7CEA32D278DABA86D41B3A18FE638E7C.d.38216A944091F3514B2237B8D347E4B4.e.24/text
+    uri: http://127.0.0.1:9517/session/d6b3f8332759d01eb79a17be9997b94c/element/f.163AD514E133EBD9620CFFF9A0A6D2E1.d.B2308F3D3187B5979FEC30950C38AE41.e.31/text
     body:
       encoding: US-ASCII
       string: ''
@@ -194,10 +194,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"value":"matz"}'
-  recorded_at: Sat, 11 Oct 2025 23:26:24 GMT
+  recorded_at: Sat, 11 Oct 2025 23:28:40 GMT
 - request:
     method: post
-    uri: http://127.0.0.1:9517/session/bd4ab7542beca45d6347327f16fee878/element
+    uri: http://127.0.0.1:9517/session/d6b3f8332759d01eb79a17be9997b94c/element
     body:
       encoding: UTF-8
       string: '{"using":"css selector","value":"img.avatar-user"}'
@@ -225,11 +225,11 @@ http_interactions:
       - no-cache
     body:
       encoding: UTF-8
-      string: '{"value":{"element-6066-11e4-a52e-4f735466cecf":"f.7CEA32D278DABA86D41B3A18FE638E7C.d.38216A944091F3514B2237B8D347E4B4.e.25"}}'
-  recorded_at: Sat, 11 Oct 2025 23:26:24 GMT
+      string: '{"value":{"element-6066-11e4-a52e-4f735466cecf":"f.163AD514E133EBD9620CFFF9A0A6D2E1.d.B2308F3D3187B5979FEC30950C38AE41.e.32"}}'
+  recorded_at: Sat, 11 Oct 2025 23:28:40 GMT
 - request:
     method: post
-    uri: http://127.0.0.1:9517/session/bd4ab7542beca45d6347327f16fee878/execute/sync
+    uri: http://127.0.0.1:9517/session/d6b3f8332759d01eb79a17be9997b94c/execute/sync
     body:
       encoding: UTF-8
       string: '{"script":"/* getAttribute */return (function(){return (function(){var
@@ -288,7 +288,7 @@ http_interactions:
         Y||\"undefined\"==typeof Y.execScript||Y.execScript(\"var \"+X[0]);for(var
         Z;X.length&&(Z=X.shift());)X.length||void 0===W?Y[Z]&&Y[Z]!==Object.prototype[Z]?Y=Y[Z]:Y=Y[Z]={}:Y[Z]=W;;
         return this.se_exportedFunctionSymbol.apply(null,arguments);}).apply(window,
-        arguments);}\n).apply(null, arguments)","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.7CEA32D278DABA86D41B3A18FE638E7C.d.38216A944091F3514B2237B8D347E4B4.e.25"},"src"]}'
+        arguments);}\n).apply(null, arguments)","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.163AD514E133EBD9620CFFF9A0A6D2E1.d.B2308F3D3187B5979FEC30950C38AE41.e.32"},"src"]}'
     headers:
       Accept:
       - application/json
@@ -314,10 +314,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"value":"https://avatars.githubusercontent.com/u/30733?s=64&v=4"}'
-  recorded_at: Sat, 11 Oct 2025 23:26:24 GMT
+  recorded_at: Sat, 11 Oct 2025 23:28:40 GMT
 - request:
     method: post
-    uri: http://127.0.0.1:9517/session/bd4ab7542beca45d6347327f16fee878/element
+    uri: http://127.0.0.1:9517/session/d6b3f8332759d01eb79a17be9997b94c/element
     body:
       encoding: UTF-8
       string: '{"using":"css selector","value":"a[href=''https://github.com/matz?tab=followers'']"}'
@@ -345,11 +345,11 @@ http_interactions:
       - no-cache
     body:
       encoding: UTF-8
-      string: '{"value":{"element-6066-11e4-a52e-4f735466cecf":"f.7CEA32D278DABA86D41B3A18FE638E7C.d.38216A944091F3514B2237B8D347E4B4.e.26"}}'
-  recorded_at: Sat, 11 Oct 2025 23:26:24 GMT
+      string: '{"value":{"element-6066-11e4-a52e-4f735466cecf":"f.163AD514E133EBD9620CFFF9A0A6D2E1.d.B2308F3D3187B5979FEC30950C38AE41.e.33"}}'
+  recorded_at: Sat, 11 Oct 2025 23:28:40 GMT
 - request:
     method: get
-    uri: http://127.0.0.1:9517/session/bd4ab7542beca45d6347327f16fee878/element/f.7CEA32D278DABA86D41B3A18FE638E7C.d.38216A944091F3514B2237B8D347E4B4.e.26/text
+    uri: http://127.0.0.1:9517/session/d6b3f8332759d01eb79a17be9997b94c/element/f.163AD514E133EBD9620CFFF9A0A6D2E1.d.B2308F3D3187B5979FEC30950C38AE41.e.33/text
     body:
       encoding: US-ASCII
       string: ''
@@ -378,10 +378,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"value":"10.1k followers"}'
-  recorded_at: Sat, 11 Oct 2025 23:26:24 GMT
+  recorded_at: Sat, 11 Oct 2025 23:28:40 GMT
 - request:
     method: post
-    uri: http://127.0.0.1:9517/session/bd4ab7542beca45d6347327f16fee878/element
+    uri: http://127.0.0.1:9517/session/d6b3f8332759d01eb79a17be9997b94c/element
     body:
       encoding: UTF-8
       string: '{"using":"css selector","value":"a[href=''https://github.com/matz?tab=following'']"}'
@@ -409,11 +409,11 @@ http_interactions:
       - no-cache
     body:
       encoding: UTF-8
-      string: '{"value":{"element-6066-11e4-a52e-4f735466cecf":"f.7CEA32D278DABA86D41B3A18FE638E7C.d.38216A944091F3514B2237B8D347E4B4.e.27"}}'
-  recorded_at: Sat, 11 Oct 2025 23:26:24 GMT
+      string: '{"value":{"element-6066-11e4-a52e-4f735466cecf":"f.163AD514E133EBD9620CFFF9A0A6D2E1.d.B2308F3D3187B5979FEC30950C38AE41.e.34"}}'
+  recorded_at: Sat, 11 Oct 2025 23:28:40 GMT
 - request:
     method: get
-    uri: http://127.0.0.1:9517/session/bd4ab7542beca45d6347327f16fee878/element/f.7CEA32D278DABA86D41B3A18FE638E7C.d.38216A944091F3514B2237B8D347E4B4.e.27/text
+    uri: http://127.0.0.1:9517/session/d6b3f8332759d01eb79a17be9997b94c/element/f.163AD514E133EBD9620CFFF9A0A6D2E1.d.B2308F3D3187B5979FEC30950C38AE41.e.34/text
     body:
       encoding: US-ASCII
       string: ''
@@ -442,10 +442,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"value":"0 following"}'
-  recorded_at: Sat, 11 Oct 2025 23:26:24 GMT
+  recorded_at: Sat, 11 Oct 2025 23:28:40 GMT
 - request:
     method: post
-    uri: http://127.0.0.1:9517/session/bd4ab7542beca45d6347327f16fee878/element
+    uri: http://127.0.0.1:9517/session/d6b3f8332759d01eb79a17be9997b94c/element
     body:
       encoding: UTF-8
       string: '{"using":"css selector","value":"#js\\-contribution\\-activity\\-description"}'
@@ -473,11 +473,11 @@ http_interactions:
       - no-cache
     body:
       encoding: UTF-8
-      string: '{"value":{"element-6066-11e4-a52e-4f735466cecf":"f.7CEA32D278DABA86D41B3A18FE638E7C.d.38216A944091F3514B2237B8D347E4B4.e.28"}}'
-  recorded_at: Sat, 11 Oct 2025 23:26:24 GMT
+      string: '{"value":{"element-6066-11e4-a52e-4f735466cecf":"f.163AD514E133EBD9620CFFF9A0A6D2E1.d.B2308F3D3187B5979FEC30950C38AE41.e.35"}}'
+  recorded_at: Sat, 11 Oct 2025 23:28:40 GMT
 - request:
     method: get
-    uri: http://127.0.0.1:9517/session/bd4ab7542beca45d6347327f16fee878/element/f.7CEA32D278DABA86D41B3A18FE638E7C.d.38216A944091F3514B2237B8D347E4B4.e.28/text
+    uri: http://127.0.0.1:9517/session/d6b3f8332759d01eb79a17be9997b94c/element/f.163AD514E133EBD9620CFFF9A0A6D2E1.d.B2308F3D3187B5979FEC30950C38AE41.e.35/text
     body:
       encoding: US-ASCII
       string: ''
@@ -506,10 +506,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"value":"1,351 contributions in the last year"}'
-  recorded_at: Sat, 11 Oct 2025 23:26:24 GMT
+  recorded_at: Sat, 11 Oct 2025 23:28:40 GMT
 - request:
     method: post
-    uri: http://127.0.0.1:9517/session/bd4ab7542beca45d6347327f16fee878/element
+    uri: http://127.0.0.1:9517/session/d6b3f8332759d01eb79a17be9997b94c/element
     body:
       encoding: UTF-8
       string: '{"using":"css selector","value":"img.avatar-user"}'
@@ -537,11 +537,11 @@ http_interactions:
       - no-cache
     body:
       encoding: UTF-8
-      string: '{"value":{"element-6066-11e4-a52e-4f735466cecf":"f.7CEA32D278DABA86D41B3A18FE638E7C.d.38216A944091F3514B2237B8D347E4B4.e.25"}}'
-  recorded_at: Sat, 11 Oct 2025 23:26:24 GMT
+      string: '{"value":{"element-6066-11e4-a52e-4f735466cecf":"f.163AD514E133EBD9620CFFF9A0A6D2E1.d.B2308F3D3187B5979FEC30950C38AE41.e.32"}}'
+  recorded_at: Sat, 11 Oct 2025 23:28:40 GMT
 - request:
     method: post
-    uri: http://127.0.0.1:9517/session/bd4ab7542beca45d6347327f16fee878/execute/sync
+    uri: http://127.0.0.1:9517/session/d6b3f8332759d01eb79a17be9997b94c/execute/sync
     body:
       encoding: UTF-8
       string: '{"script":"/* getAttribute */return (function(){return (function(){var
@@ -600,7 +600,7 @@ http_interactions:
         Y||\"undefined\"==typeof Y.execScript||Y.execScript(\"var \"+X[0]);for(var
         Z;X.length&&(Z=X.shift());)X.length||void 0===W?Y[Z]&&Y[Z]!==Object.prototype[Z]?Y=Y[Z]:Y=Y[Z]={}:Y[Z]=W;;
         return this.se_exportedFunctionSymbol.apply(null,arguments);}).apply(window,
-        arguments);}\n).apply(null, arguments)","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.7CEA32D278DABA86D41B3A18FE638E7C.d.38216A944091F3514B2237B8D347E4B4.e.25"},"src"]}'
+        arguments);}\n).apply(null, arguments)","args":[{"element-6066-11e4-a52e-4f735466cecf":"f.163AD514E133EBD9620CFFF9A0A6D2E1.d.B2308F3D3187B5979FEC30950C38AE41.e.32"},"src"]}'
     headers:
       Accept:
       - application/json
@@ -626,10 +626,10 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"value":"https://avatars.githubusercontent.com/u/30733?s=64&v=4"}'
-  recorded_at: Sat, 11 Oct 2025 23:26:24 GMT
+  recorded_at: Sat, 11 Oct 2025 23:28:40 GMT
 - request:
     method: delete
-    uri: http://127.0.0.1:9517/session/bd4ab7542beca45d6347327f16fee878
+    uri: http://127.0.0.1:9517/session/d6b3f8332759d01eb79a17be9997b94c
     body:
       encoding: US-ASCII
       string: ''
@@ -656,7 +656,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"value":null}'
-  recorded_at: Sat, 11 Oct 2025 23:26:24 GMT
+  recorded_at: Sat, 11 Oct 2025 23:28:40 GMT
 - request:
     method: get
     uri: http://127.0.0.1:9517/shutdown
@@ -684,5 +684,5 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '{"sessionId":"","status":0,"value":null}'
-  recorded_at: Sat, 11 Oct 2025 23:26:24 GMT
+  recorded_at: Sat, 11 Oct 2025 23:28:40 GMT
 recorded_with: VCR 6.3.1
