@@ -36,20 +36,18 @@ describe FetchGithubProfile do
       let(:github_url) { "https://github.com/matz" }
 
       it "fetches and returns profile data" do
-        VCR.use_cassette("fetch_github_profile_valid") do
-          service = subject
-          expect(service.success?).to be_truthy
-          expect(service.data[:error]).to be_nil
-          expect(service.data[:result]).to include(
-            :name,
-            :nick,
-            :image_url,
-            :github_url,
-            :followers_count,
-            :following_count,
-            :contributions_count
-          )
-        end
+        service = subject
+        expect(service.success?).to be_truthy
+        expect(service.data[:error]).to be_nil
+        expect(service.data[:result]).to include(
+          :name,
+          :nick,
+          :image_url,
+          :github_url,
+          :followers_count,
+          :following_count,
+          :contributions_count
+        )
       end
     end
   end

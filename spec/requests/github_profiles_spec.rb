@@ -54,17 +54,13 @@ describe "GithubProfiles", type: :request do
 
     context "When creating new profile" do
       it "creates there is no github profile" do
-        VCR.use_cassette("fetch_github_profile_request_valid") do
-          expect { post fetch_profile_path, params: fetch_params }.to change(GithubProfile, :count).by(1)
-        end
+        expect { post fetch_profile_path, params: fetch_params }.to change(GithubProfile, :count).by(1)
       end
 
       it "redirects to the profile show page" do
-        VCR.use_cassette("fetch_github_profile_request_valid") do
-          post fetch_profile_path, params: fetch_params
-          github_profile = GithubProfile.last
-          expect(response).to redirect_to(github_profile_path(github_profile))
-        end
+        post fetch_profile_path, params: fetch_params
+        github_profile = GithubProfile.last
+        expect(response).to redirect_to(github_profile_path(github_profile))
       end
     end
 
@@ -72,9 +68,7 @@ describe "GithubProfiles", type: :request do
       let!(:existing_profile) { create(:github_profile, github_url: "https://github.com/matz", nick: "matz") }
 
       it "updates existing data" do
-        VCR.use_cassette("fetch_github_profile_request_valid") do
-          expect { post fetch_profile_path, params: fetch_params }.not_to change(GithubProfile, :count)
-        end
+        expect { post fetch_profile_path, params: fetch_params }.not_to change(GithubProfile, :count)
       end
     end
   end

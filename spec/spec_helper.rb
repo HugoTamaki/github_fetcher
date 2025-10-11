@@ -11,6 +11,22 @@
 # a separate helper file that requires the additional dependencies and performs
 # the additional setup, and require it from the spec files that actually need
 # it.
+
+require "capybara/rspec"
+
+Capybara.register_driver :selenium_chrome_billy do |app|
+  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
+    'goog:chromeOptions': { 'args': ['--disable-gpu'] }
+  )
+
+  Capybara::Selenium::Driver.new(app,
+    browser: :chrome,
+    desired_capabilities: capabilities,
+    proxy: Billy.proxy.selenium_proxy
+  )
+end
+
+Capybara.javascript_driver = :selenium_chrome_billy
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
