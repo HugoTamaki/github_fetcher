@@ -16,6 +16,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_10_175249) do
 
   create_table "github_profiles", force: :cascade do |t|
     t.string "name"
+    t.string "nick"
     t.string "github_url"
     t.integer "followers_count"
     t.integer "following_count"

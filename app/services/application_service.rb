@@ -1,29 +1,35 @@
 class ApplicationService
-  attr_reader :data, :errors
+  attr_reader :data
 
   def self.call(**args)
-    new(**args).tap(&:call)
+    new(**args).call
   end
 
   def initialize(**args)
     @args = args
-    @data = nil
-    @error = nil
+    @data = {}
+    @success = false
   end
-
-  def success?
-    @error.blank?
-  end
-
-  def error
-    @error
-  end
-
+  
   def call
     raise NotImplementedError, "You need to implement the call method"
   end
 
+  def success?
+    @success
+  end
+
   private
 
-  attr_reader :args
+  def handle_success(result = {})
+    @success = true
+    @data.merge!(result)
+    self
+  end
+
+  def handle_failure(error = nil)
+    @success = false
+    @data[:error] = error
+    self
+  end
 end

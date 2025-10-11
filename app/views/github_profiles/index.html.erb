@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>GitHub Profiles</h1>
+
+  <% @github_profiles.each do |github_profile| %>
+    <div class="profile">
+      <h2><%= github_profile.name %></h2>
+      <p><strong>Name:</strong> <%= github_profile.name %></p>
+      <p><strong>Followers:</strong> <%= github_profile.followers_count %></p>
+      <p><strong>Following:</strong> <%= github_profile.following_count %></p>
+      <p><img src="<%= github_profile.image_url %>"></p>
+      <p><strong>Contributions:</strong> <%= github_profile.contributions_count %></p>
+    </div>
+    <hr>
+  <% end %>
+</div>

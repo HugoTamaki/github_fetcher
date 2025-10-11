@@ -1,12 +1,16 @@
 require 'rails_helper'
 
 describe FetchGithubProfile do
+  subject { described_class.call(github_url: github_url) }
+
   describe "#call" do
     context "When blank url" do
+      let(:github_url) { "" }
+
       it "returns error" do
-        service = described_class.call(github_url: "")
+        service = subject
         expect(service.success?).to be_falsey
-        expect(service.error).to eq("Github URL is require")
+        expect(service.data[:error]).to eq("Github URL is require")
       end
     end
 
@@ -23,14 +27,29 @@ describe FetchGithubProfile do
         invalid_urls.each do |url|
           service = described_class.call(github_url: url)
           expect(service.success?).to be_falsey
-          expect(service.error).to eq("Invalid GitHub URL format")
+          expect(service.data[:error]).to eq("Invalid GitHub URL format")
         end
       end
+    end
 
-      it "returns success for valid url" do
-        service = described_class.call(github_url: "https://github.com/HugoTamaki")
-        expect(service.success?).to be_truthy
-        expect(service.error).to be_nil
+    context "When url is valid" do
+      let(:github_url) { "https://github.com/matz" }
+
+      it "fetches and returns profile data" do
+        VCR.use_cassette("fetch_github_profile_valid") do
+          service = subject
+          expect(service.success?).to be_truthy
+          expect(service.data[:error]).to be_nil
+          expect(service.data[:result]).to include(
+            :name,
+            :nickname,
+            :image_url,
+            :github_url,
+            :followers_count,
+            :following_count,
+            :contributions_count
+          )
+        end
       end
     end
   end
