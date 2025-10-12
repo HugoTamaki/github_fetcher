@@ -19,11 +19,11 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container mt-5">
       <% flash.each do |key, message| %>
         <div class="alert alert-<%= bootstrap_class_for(key) %> alert-dismissible fade show" role="alert">
           <%= message %>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
         </div>
       <% end %>
 
@@ -32,6 +32,8 @@
         <li><%= link_to "Fetch Profile", search_profile_path, class: "btn btn-primary" %></li>
         <li><%= link_to "Profiles List", root_path, class: "btn btn-primary" if params[:action] != "index" %></li>
         <li><%= button_to "Rescan", fetch_profile_path(github_url: @github_profile.github_url, id: @github_profile.id), class: "btn btn-primary", method: :post if params[:action] == "show" %></li>
+        <li><%= link_to 'Edit', edit_github_profile_path(@github_profile), class: "btn btn-primary" if params[:action] == "show" %></li>
+        <li><%= button_to 'Delete', github_profile_path(@github_profile), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class: "btn btn-danger" if params[:action] == "show" %></li>
         </ul>
       </nav>
 

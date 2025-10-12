@@ -1,15 +1,20 @@
-<div class="container">
-  <h1>GitHub Profiles</h1>
+<h1>GitHub Profiles</h1>
 
-  <% @github_profiles.each do |github_profile| %>
-    <div class="profile">
-      <h2><%= link_to github_profile.name, github_profile_path(github_profile) %></h2>
-      <p><strong>Name:</strong> <%= github_profile.nick %></p>
-      <p><strong>Followers:</strong> <%= github_profile.followers_count %></p>
-      <p><strong>Following:</strong> <%= github_profile.following_count %></p>
-      <p><img src="<%= github_profile.image_url %>"></p>
-      <p><strong>Contributions:</strong> <%= github_profile.contributions_count %></p>
+<% @github_profiles.each do |github_profile| %>
+  <div class="profile row">
+    <div class="col-md-8">
+      <h2>
+        <img src="<%= github_profile.image_url %>" class="img-fluid rounded-circle" alt="<%= github_profile.name %>">
+        <%= link_to github_profile.name, github_profile_path(github_profile) %>
+      </h2>
     </div>
-    <hr>
-  <% end %>
-</div>
+    <div class="col-md-4">
+      <p>
+        <%= link_to 'View', github_profile_path(github_profile), class: "btn btn-primary" %>
+        <%= link_to 'Edit', edit_github_profile_path(github_profile), class: "btn btn-primary" %>
+        <%= link_to 'Delete', github_profile_path(github_profile), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+      </p>
+    </div>
+  </div>
+  <hr>
+<% end %>

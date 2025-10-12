@@ -17,7 +17,7 @@ describe "GithubProfiles", type: :request do
 
     it "returns github profiles" do
       get github_profiles_path
-      expect(response.body).to include(github_profiles.first.nick)
+      expect(response.body).to include(github_profiles.first.name)
     end
   end
 
@@ -76,6 +76,37 @@ describe "GithubProfiles", type: :request do
       it "updates existing data" do
         expect { post fetch_profile_path, params: fetch_params }.not_to change(GithubProfile, :count)
       end
+    end
+  end
+
+  describe "POST /update" do
+    let!(:github_profile) { create(:github_profile) }
+    let(:update_params) do
+       { github_profile: { name: "New Name", github_url: "https://github.com/matz" } }
+    end
+
+    it "updates the github profile" do
+      patch github_profile_path(github_profile), params: update_params
+      expect(github_profile.reload.name).to eql("New Name")
+    end
+
+    it "Rescan data" do
+      patch github_profile_path(github_profile), params: update_params
+      expect(github_profile.reload.nick).to eql("matz")
+      expect(github_profile.reload.shortened_github_url).to eql("https://bit.ly/fake")
+    end
+  end
+
+  describe "DELETE /destroy" do
+    let!(:github_profile) { create(:github_profile) }
+
+    it "deletes the github profile" do
+      expect { delete github_profile_path(github_profile) }.to change(GithubProfile, :count).by(-1)
+    end
+
+    it "redirects to the root path" do
+      delete github_profile_path(github_profile)
+      expect(response).to redirect_to(root_path)
     end
   end
 end
