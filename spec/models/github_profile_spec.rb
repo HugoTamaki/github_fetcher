@@ -19,7 +19,7 @@ describe GithubProfile, type: :model do
       expect(profile.errors[:following_count]).to include("is not a number")
       expect(profile.errors[:contributions_count]).to include("is not a number")
     end
-    
+
     it "saves valid data" do
       profile = create(:github_profile)
       expect(profile.valid?).to be_truthy

@@ -4,6 +4,7 @@ class CreateGithubProfiles < ActiveRecord::Migration[7.2]
       t.string :name
       t.string :nick
       t.string :github_url
+      t.string :shortened_github_url
       t.integer :followers_count
       t.integer :following_count
       t.integer :stars_count

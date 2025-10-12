@@ -10,7 +10,7 @@ class ApplicationService
     @data = {}
     @success = false
   end
-  
+
   def call
     raise NotImplementedError, "You need to implement the call method"
   end

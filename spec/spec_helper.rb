@@ -16,7 +16,7 @@ require "capybara/rspec"
 
 Capybara.register_driver :selenium_chrome_billy do |app|
   capabilities = Selenium::WebDriver::Remote::Capabilities.chrome(
-    'goog:chromeOptions': { 'args': ['--disable-gpu'] }
+    'goog:chromeOptions': { 'args': [ '--disable-gpu' ] }
   )
 
   Capybara::Selenium::Driver.new(app,

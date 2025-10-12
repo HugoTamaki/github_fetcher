@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 describe "GithubProfiles", type: :request do
+  before do
+    allow(ShortenUrl).to receive(:call).and_return(
+      double(success?: true, data: { link: "https://bit.ly/fake" })
+    )
+  end
+
   describe "GET /index" do
     let!(:github_profiles) { create_list(:github_profile, 3) }
 

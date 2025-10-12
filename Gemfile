@@ -47,6 +47,8 @@ group :development, :test do
   gem "pry-rails"
   gem "pry-byebug"
   gem "faker"
+  gem "dotenv-rails"
+  gem "vcr"
 end
 
 group :development do

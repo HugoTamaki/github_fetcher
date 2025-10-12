@@ -104,6 +104,10 @@ GEM
     crass (1.0.6)
     date (3.4.1)
     diff-lcs (1.6.2)
+    dotenv (3.1.8)
+    dotenv-rails (3.1.8)
+      dotenv (= 3.1.8)
+      railties (>= 6.1)
     drb (2.2.3)
     em-http-request (1.1.7)
       addressable (>= 2.3.4)
@@ -354,6 +358,8 @@ GEM
       unicode-emoji (~> 4.1)
     unicode-emoji (4.1.0)
     useragent (0.16.11)
+    vcr (6.3.1)
+      base64
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -388,6 +394,7 @@ DEPENDENCIES
   bootsnap
   brakeman
   capybara
+  dotenv-rails
   factory_bot_rails
   faker
   importmap-rails
@@ -405,6 +412,7 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
+  vcr
   web-console
   webmock
 

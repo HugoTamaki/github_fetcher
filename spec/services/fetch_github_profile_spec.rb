@@ -10,7 +10,7 @@ describe FetchGithubProfile do
       it "returns error" do
         service = subject
         expect(service.success?).to be_falsey
-        expect(service.data[:error]).to eq("Github URL is require")
+        expect(service.data[:error]).to eq("Github URL is required")
       end
     end
 

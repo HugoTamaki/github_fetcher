@@ -1,11 +1,11 @@
 class ConvertAbreviatedToNumber < ApplicationService
   MULTIPLIERS = {
-    'k' => 1_000,
-    'K' => 1_000,
-    'm' => 1_000_000,
-    'M' => 1_000_000,
-    'b' => 1_000_000_000,
-    'B' => 1_000_000_000
+    "k" => 1_000,
+    "K" => 1_000,
+    "m" => 1_000_000,
+    "M" => 1_000_000,
+    "b" => 1_000_000_000,
+    "B" => 1_000_000_000
   }.freeze
 
   def call
@@ -19,7 +19,7 @@ class ConvertAbreviatedToNumber < ApplicationService
     result = if match[2].blank?
       match[1]
     else
-      number_str = match[1].gsub(',', '')
+      number_str = match[1].gsub(",", "")
       multiplier = MULTIPLIERS[match[2]] || 1
       (number_str.to_f * multiplier).to_i
     end

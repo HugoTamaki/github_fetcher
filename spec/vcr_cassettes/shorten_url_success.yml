@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-ssl.bitly.com/v4/shorten
+    body:
+      encoding: UTF-8
+      string: '{"long_url":"https://github.com/matz"}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer 61cd3e54f5051e6ac1d082294a1848d8f0266929
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Sun, 12 Oct 2025 19:12:02 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '268'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      X-Xss-Protection:
+      - 1; mode=blockFilter
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      Content-Security-Policy:
+      - default-src 'none
+      Via:
+      - 1.1 google
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+    body:
+      encoding: UTF-8
+      string: '{"created_at":"2025-10-12T19:12:02+0000","id":"bit.ly/4oidcPs","link":"https://bit.ly/4oidcPs","custom_bitlinks":[],"long_url":"https://github.com/matz","archived":false,"tags":[],"deeplinks":[],"references":{"group":"https://api-ssl.bitly.com/v4/groups/BpaciSTcd9M"}}'
+  recorded_at: Sun, 12 Oct 2025 19:12:02 GMT
+recorded_with: VCR 6.3.1
