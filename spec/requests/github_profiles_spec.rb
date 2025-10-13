@@ -144,7 +144,7 @@ describe "GithubProfiles", type: :request do
 
       before do
         allow_any_instance_of(GithubProfile).to receive(:save).and_return(false)
-        allow_any_instance_of(GithubProfile).to receive(:errors).and_return(double(full_messages: ["Save failed"]))
+        allow_any_instance_of(GithubProfile).to receive(:errors).and_return(double(full_messages: [ "Save failed" ]))
         allow_any_instance_of(ActionDispatch::Request).to receive(:referer).and_return("/search_profile")
       end
 
@@ -196,7 +196,7 @@ describe "GithubProfiles", type: :request do
 
       before do
         allow_any_instance_of(GithubProfile).to receive(:save).and_return(false)
-        allow_any_instance_of(GithubProfile).to receive(:errors).and_return(double(full_messages: ["Save failed"]))
+        allow_any_instance_of(GithubProfile).to receive(:errors).and_return(double(full_messages: [ "Save failed" ]))
       end
 
       it "does not save the profile and returns error when save fails" do

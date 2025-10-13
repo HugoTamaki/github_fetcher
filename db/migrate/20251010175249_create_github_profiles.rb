@@ -15,7 +15,7 @@ class CreateGithubProfiles < ActiveRecord::Migration[7.2]
 
       t.timestamps
     end
-    
+
     add_index :github_profiles, :name
     add_index :github_profiles, :nick
     add_index :github_profiles, :github_url, unique: true
