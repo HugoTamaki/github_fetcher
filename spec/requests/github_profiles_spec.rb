@@ -19,10 +19,37 @@ describe "GithubProfiles", type: :request do
       get github_profiles_path
       expect(response.body).to include(github_profiles.first.name)
     end
+
+    context "When searching" do
+      it "returns profiles matching the name" do
+        get github_profiles_path, params: { query: github_profiles.first.name }
+        expect(response.body).to include(github_profiles.first.name)
+        expect(response.body).not_to include(github_profiles.second.name)
+      end
+
+      it "returns profiles matching the nick" do
+        get github_profiles_path, params: { query: github_profiles.first.nick }
+        expect(response.body).to include(github_profiles.first.name)
+        expect(response.body).not_to include(github_profiles.second.name)
+      end
+
+      it "returns profiles matching the github_url" do
+        get github_profiles_path, params: { query: github_profiles.first.github_url }
+        expect(response.body).to include(github_profiles.first.name)
+        expect(response.body).not_to include(github_profiles.second.name)
+      end
+
+      it "returns no profiles if query does not match" do
+        get github_profiles_path, params: { query: "nonexistent" }
+        github_profiles.each do |profile|
+          expect(response.body).not_to include(profile.name)
+        end
+      end
+    end
   end
 
   describe "GET /show" do
-    let!(:github_profile) { create(:github_profile) }
+    let!(:github_profile) { create(:github_profile, shortened_github_url: "https://bit.ly/fake") }
 
     it "returns status ok" do
       get github_profile_path(github_profile)
@@ -33,7 +60,7 @@ describe "GithubProfiles", type: :request do
       get github_profile_path(github_profile)
       expect(response.body).to include(github_profile.name)
       expect(response.body).to include(github_profile.nick)
-      expect(response.body).to include(github_profile.github_url)
+      expect(response.body).to include(github_profile.shortened_github_url)
       expect(response.body).to include(github_profile.followers_count.to_s)
       expect(response.body).to include(github_profile.following_count.to_s)
       expect(response.body).to include(github_profile.contributions_count.to_s)

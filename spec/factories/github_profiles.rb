@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :github_profile do
-    name { "MyString" }
+    name { Faker::Name.unique.name }
     nick { Faker::Name.unique.name }
-    github_url { "MyString" }
+    github_url { "https://github.com/#{fake_github_username}" }
     followers_count { 1 }
     following_count { 1 }
     stars_count { 1 }

@@ -1,7 +1,15 @@
 <h1>GitHub Profiles</h1>
 
+<%= form_with url: github_profiles_path, method: :get, local: true do |form| %>
+  <div class="form-group">
+    <%= form.label :query, "Search Profiles" %>
+    <%= form.text_field :query, class: "form-control" %>
+  </div>
+  <%= form.submit "Search", class: "btn btn-primary mt-3" %>
+<% end %>
+
 <% @github_profiles.each do |github_profile| %>
-  <div class="profile row">
+  <div class="profile row mt-5">
     <div class="col-md-8">
       <h2>
         <img src="<%= github_profile.image_url %>" class="img-fluid rounded-circle" alt="<%= github_profile.name %>">

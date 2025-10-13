@@ -1,6 +1,10 @@
 class GithubProfilesController < ApplicationController
   def index
-    @github_profiles = GithubProfile.all
+    @github_profiles = if params[:query].present?
+      GithubProfile.search_by_name_nick_or_github_url(params[:query])
+    else
+      GithubProfile.all
+    end
   end
 
   def show
