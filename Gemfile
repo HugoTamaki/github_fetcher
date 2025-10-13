@@ -62,4 +62,6 @@ group :test do
   gem "capybara"
   gem "webmock"
   gem "puffing-billy"
+  gem "simplecov", require: false
+  gem "coveralls", require: false
 end

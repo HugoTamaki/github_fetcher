@@ -26,5 +26,16 @@ describe ShortenUrl do
         end
       end
     end
+
+    context "When request is not successful" do
+      let(:original_url) { "https://github.com/matz" }
+
+      it "returns error when response is not successful" do
+        allow_any_instance_of(Net::HTTP).to receive(:request).and_return(double(is_a?: false, message: "XPTO"))
+        service = subject
+        expect(service.success?).to be_falsey
+        expect(service.data[:error]).to include("Failed to shorten URL")
+      end
+    end
   end
 end

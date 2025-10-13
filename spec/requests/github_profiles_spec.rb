@@ -48,6 +48,18 @@ describe "GithubProfiles", type: :request do
     end
   end
 
+  describe "GET /edit" do
+    let!(:github_profile) { create(:github_profile) }
+
+    it "returns the edit page with the profile's data" do
+      github_profile = create(:github_profile)
+      get edit_github_profile_path(github_profile)
+      expect(response).to have_http_status(:ok)
+      expect(response.body).to include(github_profile.name)
+      expect(response.body).to include(github_profile.github_url)
+    end
+  end
+
   describe "GET /show" do
     let!(:github_profile) { create(:github_profile, shortened_github_url: "https://bit.ly/fake") }
 
@@ -124,6 +136,24 @@ describe "GithubProfiles", type: :request do
         expect(response.body).to include("Invalid GitHub URL format")
       end
     end
+
+    context "When fails to save profile" do
+      let(:fetch_params) do
+        { github_url: "https://github.com/matz", name: "Lero" }
+      end
+
+      before do
+        allow_any_instance_of(GithubProfile).to receive(:save).and_return(false)
+        allow_any_instance_of(GithubProfile).to receive(:errors).and_return(double(full_messages: ["Save failed"]))
+        allow_any_instance_of(ActionDispatch::Request).to receive(:referer).and_return("/search_profile")
+      end
+
+      it "does not save the profile and returns error when save fails" do
+        post fetch_profile_path, params: fetch_params
+        expect(response.status).to eq(422)
+        expect(response.body).to include("Save failed")
+      end
+    end
   end
 
   describe "POST /update" do
@@ -156,6 +186,23 @@ describe "GithubProfiles", type: :request do
       it "returns error message" do
         patch github_profile_path(github_profile), params: update_params
         expect(response.body).to include("Invalid GitHub URL format")
+      end
+    end
+
+    context "When fails to save profile" do
+      let(:fetch_params) do
+        { github_url: "https://github.com/matz", name: "Lero" }
+      end
+
+      before do
+        allow_any_instance_of(GithubProfile).to receive(:save).and_return(false)
+        allow_any_instance_of(GithubProfile).to receive(:errors).and_return(double(full_messages: ["Save failed"]))
+      end
+
+      it "does not save the profile and returns error when save fails" do
+        post fetch_profile_path, params: fetch_params
+        expect(response.status).to eq(422)
+        expect(response.body).to include("Save failed")
       end
     end
   end

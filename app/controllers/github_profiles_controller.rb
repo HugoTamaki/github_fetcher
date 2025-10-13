@@ -47,7 +47,7 @@ class GithubProfilesController < ApplicationController
     if @github_profile.destroy
       redirect_to root_path, notice: "GitHub profile deleted successfully."
     else
-      redirect_to github_profile_path(@github_profile), alert: "Failed to delete GitHub profile."
+      render github_profile_path(@github_profile), alert: "Failed to delete GitHub profile."
     end
   end
 

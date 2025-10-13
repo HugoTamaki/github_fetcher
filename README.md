@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/HugoTamaki/github_fetcher/badge.svg?branch=main)](https://coveralls.io/github/HugoTamaki/github_fetcher?branch=main)
+
 # Github Fetcher
 
 ## Para rodar em ambiente local

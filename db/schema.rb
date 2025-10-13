@@ -15,9 +15,9 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_10_175249) do
   enable_extension "plpgsql"
 
   create_table "github_profiles", force: :cascade do |t|
-    t.string "name"
-    t.string "nick"
-    t.string "github_url"
+    t.string "name", null: false
+    t.string "nick", null: false
+    t.string "github_url", null: false
     t.string "shortened_github_url"
     t.integer "followers_count"
     t.integer "following_count"
@@ -28,5 +28,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_10_10_175249) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["github_url"], name: "index_github_profiles_on_github_url", unique: true
+    t.index ["name"], name: "index_github_profiles_on_name"
+    t.index ["nick"], name: "index_github_profiles_on_nick"
   end
 end
