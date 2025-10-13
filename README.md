@@ -27,6 +27,7 @@ rake db:migrate
 You need to set an environment variable:
 Create an account at `app.bitly.com`. Generate an API KEY.
 Set `BITLY_API_TOKEN` in a `.env.local` file at the project root and define the attributes. Also create a `.env.test` and set the same for testing.
+Also, it may be necessary to set the database username (DB_USERNAME=your_db_username) and password (DB_PASSWORD=your_db_password)
 
 Run `rails s` and access `localhost:3000` to start the project.
 
