@@ -26,10 +26,7 @@ class GithubProfilesController < ApplicationController
         name: github_profile_params[:name]
       )
 
-      unless fetch_profile_service.success?
-        flash.now[:alert] = fetch_profile_service.data[:error]
-        return render :edit, status: :unprocessable_entity
-      end
+      return handle_fetch_profile_failure(fetch_profile_service, :edit) unless fetch_profile_service.success?
 
       @github_profile.assign_attributes(fetch_profile_service.data[:result])
 
@@ -62,10 +59,7 @@ class GithubProfilesController < ApplicationController
 
     @github_profile = GithubProfile.find_by(id: params[:id]) if params[:id].present?
 
-    unless fetch_profile_service.success?
-      flash.now[:alert] = fetch_profile_service.data[:error]
-      return render page_by_request_referer, status: :unprocessable_entity
-    end
+    return handle_fetch_profile_failure(fetch_profile_service, page_by_request_referer) unless fetch_profile_service.success?
 
     @github_profile ||= GithubProfile.find_or_initialize_by(nick: fetch_profile_service.data[:result][:nick])
     @github_profile.assign_attributes(fetch_profile_service.data[:result])
@@ -81,6 +75,11 @@ class GithubProfilesController < ApplicationController
   end
 
   private
+
+  def handle_fetch_profile_failure(service, page_to_render)
+    flash.now[:alert] = service.data[:error]
+    render page_to_render, status: :unprocessable_entity
+  end
 
   def generate_short_url
     shorten_url_service = ShortenUrl.call(original_url: params[:github_url])

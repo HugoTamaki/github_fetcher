@@ -26,7 +26,7 @@ class FetchGithubProfile < ApplicationService
     @driver = Selenium::WebDriver.for :chrome, options: options
     @driver.navigate.to @github_url
 
-    sleep 0.6
+    sleep 1
 
     name = @name || fetch_name
     nick = fetch_nickname
