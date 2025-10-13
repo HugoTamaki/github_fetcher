@@ -104,7 +104,7 @@ describe "GithubProfiles", type: :request do
         expect { post fetch_profile_path, params: fetch_params }.not_to change(GithubProfile, :count)
       end
     end
-    
+
     context "When FetchGithubProfile fails" do
       let(:fetch_params) do
         { github_url: "https://github.com/john_doe", name: "Lero" }
