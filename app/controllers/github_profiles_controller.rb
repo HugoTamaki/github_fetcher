@@ -29,8 +29,7 @@ class GithubProfilesController < ApplicationController
 
       @github_profile.assign_attributes(fetch_profile_service.data[:result])
 
-      shorten_url_service = ShortenUrl.call(original_url: params[:github_url])
-      @github_profile.shortened_github_url = shorten_url_service.data[:link]
+      generate_short_url
     end
 
     if @github_profile.save
@@ -61,32 +60,34 @@ class GithubProfilesController < ApplicationController
 
     unless fetch_profile_service.success?
       flash.now[:alert] = fetch_profile_service.data[:error]
-      return render page_by_request_referrer, status: :unprocessable_entity
+      return render page_by_request_referer, status: :unprocessable_entity
     end
 
     @github_profile ||= GithubProfile.find_or_initialize_by(nick: fetch_profile_service.data[:result][:nick])
     @github_profile.assign_attributes(fetch_profile_service.data[:result])
 
-    if @github_profile.shortened_github_url.blank?
-      shorten_url_service = ShortenUrl.call(original_url: params[:github_url])
-      @github_profile.shortened_github_url = shorten_url_service.data[:link]
-    end
+    generate_short_url if @github_profile.shortened_github_url.blank?
 
     if @github_profile.save
       redirect_to github_profile_path(@github_profile), notice: "GitHub profile fetched successfully."
     else
       flash.now[:alert] = @github_profile.errors.full_messages.to_sentence
-      render page_by_request_referrer, status: :unprocessable_entity
+      render page_by_request_referer, status: :unprocessable_entity
     end
   end
 
   private
 
+  def generate_short_url
+    shorten_url_service = ShortenUrl.call(original_url: params[:github_url])
+    @github_profile.shortened_github_url = shorten_url_service.data[:link]
+  end
+
   def github_profile_params
     params.require(:github_profile).permit(:name, :github_url)
   end
 
-  def page_by_request_referrer
+  def page_by_request_referer
     if request.referer&.include?("search_profile")
       :search_profile
     else

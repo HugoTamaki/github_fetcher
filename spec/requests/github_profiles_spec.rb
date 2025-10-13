@@ -77,6 +77,26 @@ describe "GithubProfiles", type: :request do
         expect { post fetch_profile_path, params: fetch_params }.not_to change(GithubProfile, :count)
       end
     end
+    
+    context "When FetchGithubProfile fails" do
+      let(:fetch_params) do
+        { github_url: "https://github.com/john_doe", name: "Lero" }
+      end
+
+      before do
+        allow_any_instance_of(ActionDispatch::Request).to receive(:referer).and_return("/search_profile")
+      end
+
+      it "does not create profile" do
+        post fetch_profile_path, params: fetch_params
+        expect { post fetch_profile_path, params: fetch_params }.not_to change(GithubProfile, :count)
+      end
+
+      it "returns error" do
+        post fetch_profile_path, params: fetch_params
+        expect(response.body).to include("Invalid GitHub URL format")
+      end
+    end
   end
 
   describe "POST /update" do
@@ -94,6 +114,22 @@ describe "GithubProfiles", type: :request do
       patch github_profile_path(github_profile), params: update_params
       expect(github_profile.reload.nick).to eql("matz")
       expect(github_profile.reload.shortened_github_url).to eql("https://bit.ly/fake")
+    end
+
+    context "When FetchGithubProfile fails" do
+      let(:update_params) do
+        { github_profile: { name: "New Name", github_url: "https://github.com/john--doe" } }
+      end
+
+      it "does not update data" do
+        patch github_profile_path(github_profile), params: update_params
+        expect(response.status).to be(422)
+      end
+
+      it "returns error message" do
+        patch github_profile_path(github_profile), params: update_params
+        expect(response.body).to include("Invalid GitHub URL format")
+      end
     end
   end
 
