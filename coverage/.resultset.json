@@ -12,15 +12,13 @@
           null,
           null,
           null
-        ],
-        "branches": {}
+        ]
       },
       "/Users/hugotamaki/workspace/github_fetcher/app/helpers/github_profiles_helper.rb": {
         "lines": [
           1,
           null
-        ],
-        "branches": {}
+        ]
       },
       "/Users/hugotamaki/workspace/github_fetcher/app/models/github_profile.rb": {
         "lines": [
@@ -36,16 +34,14 @@
           null,
           null,
           null
-        ],
-        "branches": {}
+        ]
       },
       "/Users/hugotamaki/workspace/github_fetcher/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
-        ],
-        "branches": {}
+        ]
       },
       "/Users/hugotamaki/workspace/github_fetcher/app/services/convert_abreviated_to_number.rb": {
         "lines": [
@@ -78,21 +74,7 @@
           20,
           null,
           null
-        ],
-        "branches": {
-          "[:if, 0, 13, 4, 13, 40]": {
-            "[:then, 1, 13, 4, 13, 12]": 0,
-            "[:else, 2, 13, 4, 13, 40]": 20
-          },
-          "[:unless, 3, 17, 4, 17, 53]": {
-            "[:else, 4, 17, 4, 17, 53]": 20,
-            "[:then, 5, 17, 4, 17, 40]": 0
-          },
-          "[:if, 6, 19, 13, 25, 7]": {
-            "[:then, 7, 20, 6, 20, 14]": 9,
-            "[:else, 8, 22, 6, 24, 41]": 11
-          }
-        }
+        ]
       },
       "/Users/hugotamaki/workspace/github_fetcher/app/services/application_service.rb": {
         "lines": [
@@ -131,8 +113,7 @@
           13,
           null,
           null
-        ],
-        "branches": {}
+        ]
       },
       "/Users/hugotamaki/workspace/github_fetcher/app/services/fetch_github_profile.rb": {
         "lines": [
@@ -159,15 +140,7 @@
           1,
           8,
           8,
-          8,
           null,
-          8,
-          8,
-          null,
-          8,
-          null,
-          8,
-          8,
           8,
           8,
           8,
@@ -188,15 +161,11 @@
           null,
           0,
           null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
           8,
-          8,
+          null,
+          null,
+          1,
+          1,
           null,
           null,
           1,
@@ -205,12 +174,18 @@
           null,
           1,
           8,
+          null,
+          null,
+          1,
+          41,
+          null,
+          null,
+          1,
           8,
           8,
           null,
           null,
           1,
-          8,
           8,
           8,
           null,
@@ -225,25 +200,7 @@
           null,
           null,
           null
-        ],
-        "branches": {
-          "[:if, 0, 9, 4, 9, 52]": {
-            "[:then, 1, 9, 4, 9, 33]": 11,
-            "[:else, 2, 9, 4, 9, 52]": 8
-          },
-          "[:if, 3, 17, 4, 17, 70]": {
-            "[:then, 4, 17, 4, 17, 48]": 1,
-            "[:else, 5, 17, 4, 17, 70]": 18
-          },
-          "[:unless, 6, 18, 4, 18, 98]": {
-            "[:else, 7, 18, 4, 18, 98]": 8,
-            "[:then, 8, 18, 4, 18, 51]": 10
-          },
-          "[:if, 9, 82, 4, 87, 7]": {
-            "[:then, 10, 83, 6, 84, 71]": 8,
-            "[:else, 11, 86, 6, 86, 7]": 0
-          }
-        }
+        ]
       },
       "/Users/hugotamaki/workspace/github_fetcher/app/services/shorten_url.rb": {
         "lines": [
@@ -285,17 +242,7 @@
           0,
           null,
           null
-        ],
-        "branches": {
-          "[:if, 0, 12, 4, 12, 77]": {
-            "[:then, 1, 12, 4, 12, 53]": 1,
-            "[:else, 2, 12, 4, 12, 77]": 2
-          },
-          "[:if, 3, 29, 4, 34, 7]": {
-            "[:then, 4, 30, 6, 31, 40]": 1,
-            "[:else, 5, 33, 6, 33, 66]": 1
-          }
-        }
+        ]
       },
       "/Users/hugotamaki/workspace/github_fetcher/app/controllers/github_profiles_controller.rb": {
         "lines": [
@@ -399,53 +346,7 @@
           null,
           null,
           null
-        ],
-        "branches": {
-          "[:if, 0, 3, 23, 7, 7]": {
-            "[:then, 1, 4, 6, 4, 96]": 4,
-            "[:else, 2, 6, 6, 6, 46]": 2
-          },
-          "[:if, 3, 23, 4, 34, 7]": {
-            "[:then, 4, 24, 6, 33, 24]": 4,
-            "[:else, 5, 23, 4, 34, 7]": 0
-          },
-          "[:unless, 6, 29, 6, 29, 109]": {
-            "[:else, 7, 29, 6, 29, 109]": 2,
-            "[:then, 8, 29, 6, 29, 71]": 2
-          },
-          "[:if, 9, 36, 4, 41, 7]": {
-            "[:then, 10, 37, 6, 37, 102]": 2,
-            "[:else, 11, 39, 6, 40, 49]": 0
-          },
-          "[:if, 12, 47, 4, 51, 7]": {
-            "[:then, 13, 48, 6, 48, 75]": 2,
-            "[:else, 14, 50, 6, 50, 92]": 0
-          },
-          "[:if, 15, 60, 4, 60, 84]": {
-            "[:then, 16, 60, 4, 60, 60]": 0,
-            "[:else, 17, 60, 4, 60, 84]": 8
-          },
-          "[:unless, 18, 62, 4, 62, 125]": {
-            "[:else, 19, 62, 4, 62, 125]": 5,
-            "[:then, 20, 62, 4, 62, 87]": 3
-          },
-          "[:if, 21, 67, 4, 67, 69]": {
-            "[:then, 22, 67, 4, 67, 22]": 5,
-            "[:else, 23, 67, 4, 67, 69]": 0
-          },
-          "[:if, 24, 69, 4, 74, 7]": {
-            "[:then, 25, 70, 6, 70, 102]": 3,
-            "[:else, 26, 72, 6, 73, 67]": 2
-          },
-          "[:\"&.\", 27, 94, 7, 94, 50]": {
-            "[:then, 28, 94, 7, 94, 50]": 4,
-            "[:else, 29, 94, 7, 94, 50]": 1
-          },
-          "[:if, 30, 94, 4, 98, 7]": {
-            "[:then, 31, 95, 6, 95, 21]": 4,
-            "[:else, 32, 97, 6, 97, 11]": 1
-          }
-        }
+        ]
       },
       "/Users/hugotamaki/workspace/github_fetcher/app/controllers/application_controller.rb": {
         "lines": [
@@ -453,10 +354,9 @@
           null,
           1,
           null
-        ],
-        "branches": {}
+        ]
       }
     },
-    "timestamp": 1760395620
+    "timestamp": 1760459227
   }
 }

@@ -41,10 +41,10 @@ To check test coverage, run `open coverage/index.html`
 
 ## Notes
 
-- Initially, I intended to use `mechanize` in the webscraper to fetch data. However, to get contribution data, it was not possible because the profile page loads this information via AJAX. So I used `selenium-webdriver`. With `selenium-webdriver`, it was not possible to use VCR to cache requests. In this case, I used the `puffing-billy` gem. I used VCR in the project to cache requests to the URL shortener.
+- Initially, I intended to use `mechanize` in the webscraper to fetch data. However, to get contribution data, it was not possible because the profile page loads this information via AJAX. So I used `ferrum`, which doing some research uses less memory and awaits for Javascript to run. To allow faster specs, I used `puffing-billy` to cache requests, since VCR would not work for these headless browser requests.
 - I couldn't find the number of stars on the profile.
 - I decided to convert abbreviated numbers to integers, in case the data is used for statistics in the future. (Ex: 10.1k - 10100)
-- I needed to add a 1-second delay to allow AJAX data from the profile to load. The service that fetches profile data is [FetchGithubProfile](./app/services/fetch_github_profile.rb). I chose to call the service directly in the controller since this is a test. Ideally, in production, the service call should be executed in an asynchronous Job, using sidekiq for example, and use push notifications to redirect the user to the created profile page with a success or failure notification.
+- The service that fetches profile data is [FetchGithubProfile](./app/services/fetch_github_profile.rb). I chose to call the service directly in the controller since this is a test. Ideally, in production, the service call should be executed in an asynchronous Job, using sidekiq for example, and use push notifications to redirect the user to the created profile page with a success or failure notification. Other solution would be configure a max timeout to fetch data.
 - For URL shortening, I used the Bitly API. The relevant service is [this one](./app/services/shorten_url.rb)
 - I chose to organize services into separate classes to facilitate maintenance and testing.
 - I implemented error handling in the services to ensure that failures in integration with external APIs do not break the main application flow.

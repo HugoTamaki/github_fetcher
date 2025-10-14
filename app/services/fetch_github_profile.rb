@@ -19,14 +19,8 @@ class FetchGithubProfile < ApplicationService
   end
 
   def fetch_and_store_profile
-    options = Selenium::WebDriver::Chrome::Options.new
-    options.add_argument("--headless")
-    options.add_argument("--disable-gpu")
-
-    @driver = Selenium::WebDriver.for :chrome, options: options
-    @driver.navigate.to @github_url
-
-    sleep 1
+    browser.goto(@github_url)
+    browser.network.wait_for_idle
 
     name = @name || fetch_name
     nick = fetch_nickname
@@ -34,8 +28,6 @@ class FetchGithubProfile < ApplicationService
     followers_count = fetch_followers_count
     following_count = fetch_following_count
     contributions_count = fetch_contributions_count
-    image_url = @driver.find_element(css: "img.avatar-user").attribute("src") rescue nil
-    @driver.quit
 
     handle_success(result: {
       name: name,
@@ -49,36 +41,38 @@ class FetchGithubProfile < ApplicationService
 
   rescue StandardError => e
     handle_failure("Failed to fetch GitHub profile: #{e.message}")
+  ensure
+    browser.quit
   end
 
   def fetch_name
-    name_element = @driver.find_element(css: "span.p-name")
-    name_element.text.strip rescue nil
+    browser.at_css('h1.vcard-names .vcard-fullname')&.text&.strip
   end
 
   def fetch_nickname
-    nickname_element = @driver.find_element(css: "span.p-nickname")
-    nickname_element.text.strip rescue nil
+    browser.at_css('h1.vcard-names .vcard-username')&.text&.strip
   end
 
   def fetch_image_url
-    @driver.find_element(css: "img.avatar-user").attribute("src") rescue nil
+    browser.at_css("img.avatar-user")[:src] rescue nil
+  end
+
+  def browser
+    @browser ||= Ferrum::Browser.new(headless: true)
   end
 
   def fetch_followers_count
-    followers_link = @driver.find_element(css: "a[href='#{@github_url}?tab=followers']")
-    followers_text = followers_link.text.strip.split(" ").first rescue "0"
+    followers_text = @browser.at_css("a[href='#{@github_url}?tab=followers'] .text-bold")&.text&.strip
     ConvertAbreviatedToNumber.call(abreviated_number: followers_text).data[:result]
   end
 
   def fetch_following_count
-    following_link = @driver.find_element(css: "a[href='#{@github_url}?tab=following']")
-    following_text = following_link.text.strip.split(" ").first rescue "0"
+    following_text = @browser.at_css("a[href='#{@github_url}?tab=following'] .text-bold")&.text&.strip
     ConvertAbreviatedToNumber.call(abreviated_number: following_text).data[:result]
   end
 
   def fetch_contributions_count
-    contributions_element = @driver.find_element(id: "js-contribution-activity-description")
+    contributions_element = @browser.at_css("#js-contribution-activity-description")
     if contributions_element
       contributions_text = contributions_element.text.strip
       contributions_text.split(" ").first.scan(/\d/).join.to_i rescue 0
