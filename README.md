@@ -41,7 +41,7 @@ To check test coverage, run `open coverage/index.html`
 
 ## Notes
 
-- Initially, I intended to use `mechanize` in the webscraper to fetch data. However, to get contribution data, it was not possible because the profile page loads this information via AJAX. So I used `ferrum`, which doing some research uses less memory and awaits for Javascript to run. To allow faster specs, I used `puffing-billy` to cache requests, since VCR would not work for these headless browser requests.
+- Initially, I intended to use `mechanize` in the webscraper to fetch data. However, to get contribution data, it was not possible because the profile page loads this information via AJAX. So I used `ferrum`, which doing some research uses less memory than `selenium-webdriver` and awaits for Javascript to run. To allow faster specs, I used `puffing-billy` to cache requests, since VCR would not work for these headless browser requests.
 - I couldn't find the number of stars on the profile.
 - I decided to convert abbreviated numbers to integers, in case the data is used for statistics in the future. (Ex: 10.1k - 10100)
 - The service that fetches profile data is [FetchGithubProfile](./app/services/fetch_github_profile.rb). I chose to call the service directly in the controller since this is a test. Ideally, in production, the service call should be executed in an asynchronous Job, using sidekiq for example, and use push notifications to redirect the user to the created profile page with a success or failure notification. Other solution would be configure a max timeout to fetch data.

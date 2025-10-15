@@ -8,4 +8,12 @@
     <p><img src="<%= @github_profile.image_url %>"></p>
     <p><strong>Contributions:</strong> <%= @github_profile.contributions_count %></p>
   </div>
+
+  <nav>
+    <ul class="list-inline">
+      <li class="list-inline-item"><%= button_to "Rescan", fetch_profile_path(github_url: @github_profile.github_url, id: @github_profile.id), class: "btn btn-primary", method: :post %></li>
+      <li class="list-inline-item"><%= link_to 'Edit', edit_github_profile_path(@github_profile), class: "btn btn-primary" %></li>
+      <li class="list-inline-item"><%= link_to 'Delete', github_profile_path(@github_profile), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></li>
+    </ul>
+  </nav>
 </div>

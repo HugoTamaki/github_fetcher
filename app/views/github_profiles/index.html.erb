@@ -17,11 +17,13 @@
       </h2>
     </div>
     <div class="col-md-4">
-      <p>
-        <%= link_to 'View', github_profile_path(github_profile), class: "btn btn-primary" %>
-        <%= link_to 'Edit', edit_github_profile_path(github_profile), class: "btn btn-primary" %>
-        <%= link_to 'Delete', github_profile_path(github_profile), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-      </p>
+      <nav>
+        <ul class="list-inline">
+          <li class="list-inline-item"><%= link_to 'View', github_profile_path(github_profile), class: "btn btn-primary" %></li>
+          <li class="list-inline-item"><%= link_to 'Edit', edit_github_profile_path(github_profile), class: "btn btn-primary" %></li>
+          <li class="list-inline-item"><%= link_to 'Delete', github_profile_path(github_profile), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></li>
+        </ul>
+      </nav>
     </div>
   </div>
   <hr>

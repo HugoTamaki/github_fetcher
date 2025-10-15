@@ -1,0 +1,6 @@
+<nav>
+  <ul style="display: flex; list-style: none; padding: 0; gap: 10px;">
+    <li><%= link_to "Fetch Profile", search_profile_path, class: "btn btn-primary" %></li>
+    <li><%= link_to "Profiles List", root_path, class: "btn btn-primary" if params[:action] != "index" %></li>
+  </ul>
+</nav>
